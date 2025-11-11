@@ -1,0 +1,132 @@
+.mainHeader {
+    position: sticky; 
+    top: 0;
+    width: inherit;
+    padding: 16px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    
+    z-index: 1;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+}
+
+.logo-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.chat-header h3 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #0b1330;
+    margin: 0;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+
+lucide-icon {
+    display: flex;
+}
+
+.message-input-container {
+    position: sticky;       
+    bottom: 0;
+    max-width: 100%;        
+    box-sizing: border-box;  
+    padding: 16px;
+    background: #f8f8f8;
+    border-top: 1px solid #ddd;
+    z-index: 1000;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;            
+    padding: 10px 40px 10px 70px; 
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.input-left-icons {
+    position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.input-left-icons lucide-icon {
+    width: 20px;
+    height: 20px;
+    color: #555;
+    cursor: pointer;
+}
+
+.input-right-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+}
+
+.input-right-icon lucide-icon {
+    width: 20px;
+    height: 20px;
+    color: #555;
+    cursor: pointer;
+}
+
+.file-menu {
+  position: absolute;
+  bottom: 50px; /* adjust relative to input */
+  left: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 140px;
+  z-index: 1000;
+}
+
+.file-menu-item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.2s ease;
+}
+
+.file-menu-item:hover {
+  background: #f0f2f5;
+}
+

@@ -1,0 +1,101 @@
+
+
+.sidebar {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  background-color: #0f1735;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 18px 10px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.sidebar:has(nav a:hover),
+.sidebar.expanded {
+  width: 250px;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  transition: width 0.3s ease;
+}
+
+.text {
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s;
+  transform: translateX(-10px);
+}
+
+.sidebar:has(nav a:hover) .text,
+.sidebar.expanded .text {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.15s;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 20px 5px;
+}
+
+.logo lucide-icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+nav a {
+  text-decoration: none;
+  color: #8fa5c0;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+
+nav a:hover{
+      background-color: rgb(17, 38, 59);
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #8fa5c0;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
+  padding: 15px 0;
+  transition: none;
+}
+
+.toggle-btn:hover {
+  background: none;
+  color: #8fa5c0;
+  transform: none;
+}

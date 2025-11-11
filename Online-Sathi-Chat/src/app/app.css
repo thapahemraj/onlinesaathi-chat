@@ -1,0 +1,73 @@
+:root {
+  --sidebar-width: 60px;
+}
+
+.app-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #f5f6fa;
+}
+
+app-header {
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.app-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 70px); 
+}
+
+app-navbar {
+  width: var(--sidebar-width);
+  transition: all 0.3s ease;
+  z-index: 10;
+  position: sticky;
+  left: 0;
+  top: 0;
+  align-self: stretch;
+  height: 100%;
+}
+
+app-chats {
+  width: 400px;
+  min-width: 300px;
+  max-width: 700px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  align-self: stretch;
+  height: 100%;
+  z-index: 5;
+  transition: width 0.1s ease-out;
+}
+
+.resize-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  cursor: ew-resize;
+  background: transparent;
+  z-index: 10;
+}
+
+.resize-handle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  flex: 1;
+  background-color: #fafbff;
+  overflow-y: auto;
+  height: 100%;
+  /* padding: 20px; */
+}

@@ -1,0 +1,46 @@
+<div class="header">
+  <div class="chat-header">
+    <div class="logo-header">
+       <img src="https://onlinesaathi.org/assets/logo-9AnUQyfC.png" alt="Logo">
+    </div>
+    <h3>Online Saathi</h3>
+  </div>
+
+  <div class="searchBox">
+    <lucide-icon name="search"></lucide-icon>
+    <input type="text" placeholder="Search chats..." />
+  </div>
+
+  <div class="header-actions">
+    <div class="status-dropdown">
+      <button class="status-btn" (click)="toggleDropdown()">
+        <div class="status-dot" [ngClass]="isActive ? 'green' : 'red'"></div>
+        {{ isActive ? 'Active Users' : 'Inactive Users' }}
+        <lucide-icon name="chevron-down" [ngClass]="{ 'rotate': dropdownOpen }"></lucide-icon>
+      </button>
+
+      <div class="dropdown-menu" *ngIf="dropdownOpen">
+        <div class="dropdown-item" (click)="setStatus(true)">
+          <div class="status-dot green"></div>
+          Active
+        </div>
+        <div class="dropdown-item" (click)="setStatus(false)">
+          <div class="status-dot red"></div>
+          Inactive
+        </div>
+      </div>
+    </div>
+
+    <button class="icon-btn">
+      <lucide-icon name="bot"></lucide-icon>
+    </button>
+
+    <button class="icon-btn" (click)="toggleThemeIcon()">
+      <lucide-icon [name]="isDarkMode ? 'moon' : 'sun'"></lucide-icon>
+    </button>
+
+    <div class="profile-avatar">
+      <img src="https://onlinesaathi.org/assets/logo-9AnUQyfC.png" alt="User Profile" />
+    </div>
+  </div>
+</div>

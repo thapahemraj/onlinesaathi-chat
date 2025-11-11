@@ -1,0 +1,16 @@
+<div class="sidebar" [class.expanded]="isExpanded">
+  <nav>
+    <a (click)="openMessages()">
+      <lucide-icon name="notebook-pen"></lucide-icon>
+      <span class="text">Messages</span>
+    </a>
+    <a (click)="openSettings()">
+      <lucide-icon name="shield"></lucide-icon>
+      <span class="text">Settings</span>
+    </a>
+  </nav>
+
+  <button class="toggle-btn" (click)="toggleSidebar()">
+    <lucide-icon [name]="isExpanded ? 'chevron-left' : 'chevron-right'"></lucide-icon>
+  </button>
+</div>

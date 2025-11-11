@@ -1,0 +1,93 @@
+<div class="chat-container">
+  <div class="row h-100">
+    <!-- User List -->
+    <div class="col-md-4 border-end">
+      <div class="user-list">
+        <div class="p-3 border-bottom">
+          <h5>Chats</h5>
+          <input type="text" class="form-control" placeholder="Search users...">
+        </div>
+        <div class="list-group list-group-flush">
+          <a href="javascript:;" 
+             *ngFor="let user of users" 
+             (click)="selectUser(user)"
+             [class.active]="selectedUser?.id === user.id"
+             class="list-group-item list-group-item-action">
+            <div class="d-flex align-items-center">
+              <div class="avatar me-3">
+                <div class="avatar-circle">
+                  {{ user.name.charAt(0).toUpperCase() }}
+                </div>
+              </div>
+              <div>
+                <h6 class="mb-0">{{ user.name }}</h6>
+                <small class="text-muted">Last message...</small>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="col-md-8 d-flex flex-column" *ngIf="selectedUser">
+      <!-- Chat Header -->
+      <div class="chat-header p-3 border-bottom d-flex align-items-center">
+        <div class="avatar me-3">
+          <div class="avatar-circle">
+            {{ selectedUser.name.charAt(0).toUpperCase() }}
+          </div>
+        </div>
+        <div>
+          <h5 class="mb-0">{{ selectedUser.name }}</h5>
+          <small class="text-muted">Online</small>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages flex-grow-1 p-3 overflow-auto">
+        <div *ngIf="loading" class="text-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        
+        <div *ngFor="let message of messages" 
+             [class.justify-content-end]="message.senderId === currentUserId"
+             class="d-flex mb-3">
+          <div [class.bg-primary]="message.senderId === currentUserId" 
+               [class.text-white]="message.senderId === currentUserId"
+               class="message p-3 rounded-3">
+            <div class="message-content">{{ message.content }}</div>
+            <div class="message-time text-end">
+              <small>{{ message.timestamp | date:'shortTime' }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Input -->
+      <div class="chat-input p-3 border-top">
+        <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" class="d-flex">
+          <input type="text" 
+                 formControlName="content"
+                 class="form-control me-2" 
+                 placeholder="Type a message..."
+                 (keyup.enter)="sendMessage()">
+          <button type="submit" class="btn btn-primary" [disabled]="messageForm.invalid">
+            <i class="fas fa-paper-plane"></i> Send
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- No Chat Selected -->
+    <div class="col-md-8 d-flex align-items-center justify-content-center" *ngIf="!selectedUser">
+      <div class="text-center">
+        <i class="fas fa-comments fa-4x text-muted mb-3"></i>
+        <h4>Select a chat to start messaging</h4>
+        <p class="text-muted">Choose a user from the list to begin your conversation</p>
+      </div>
+    </div>
+  </div>
+</div>

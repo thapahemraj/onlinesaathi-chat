@@ -1,0 +1,25 @@
+.nochat-container{
+    height: 99.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     background-color: #eeeded;
+}
+
+.nochat-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nochat-title{
+    font-size: 32px;
+    font-weight: 600;
+    color: #0b1330;
+    margin: 10px 0 0 0;
+}
+
+.nochat-subtitle{
+    font-size: 14px;
+    color: #555;
+}

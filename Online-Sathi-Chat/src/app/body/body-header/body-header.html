@@ -1,0 +1,42 @@
+<div class="mainHeader">
+  <div class="chat-header">
+    <div class="logo-header">
+      <img src="https://onlinesaathi.org/assets/logo-9AnUQyfC.png" alt="Logo">
+    </div>
+    <h3>Sujit Kumar</h3>
+  </div>
+
+  <div class="header-actions">
+    <lucide-icon name="x" (click)="onClose()"></lucide-icon>
+  </div>
+</div>
+
+<div class="content-container">
+  <app-user-detail></app-user-detail>
+</div>
+
+<div class="message-input-container">
+  <div class="input-wrapper">
+    <!-- Bind selectedFileName to input -->
+    <input #messageInput type="text" placeholder="Type a message..." [value]="selectedFileName" />
+
+    <div class="input-left-icons">
+      <lucide-icon name="plus" (click)="toggleFileMenu()"></lucide-icon>
+      <lucide-icon name="smile"></lucide-icon>
+    </div>
+
+    <!-- File/Media Menu -->
+    <div class="file-menu" *ngIf="showFileMenu">
+      <div class="file-menu-item" (click)="selectMedia()">Photo / Video</div>
+      <div class="file-menu-item" (click)="selectDocument()">Document</div>
+    </div>
+
+    <div class="input-right-icon">
+      <lucide-icon name="send"></lucide-icon>
+    </div>
+
+    <!-- Hidden inputs -->
+    <input type="file" #mediaInput accept="image/*,video/*" style="display: none" (change)="onMediaSelected($event)">
+    <input type="file" #fileInput accept=".pdf,.doc,.docx,.txt" style="display: none" (change)="onFileSelected($event)">
+  </div>
+</div>

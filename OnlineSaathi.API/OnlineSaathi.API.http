@@ -1,0 +1,6 @@
+@OnlineSaathi.API_HostAddress = http://localhost:5025
+
+GET {{OnlineSaathi.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
