@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineSaathi.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e730a8d2db8e2620f23221ee6dd97732c3a31ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc761a14f9c7d08301fdbfdf79ebee5448918275")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineSaathi.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineSaathi.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

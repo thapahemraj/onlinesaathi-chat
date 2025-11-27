@@ -2337,11 +2337,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspaces/onlinesaathi-chat/OnlineSaathi.API/OnlineSaathi.API.csproj",
+      "projectUniqueName": "/workspaces/onlinesaathi-chat/onlinesaathi.api/OnlineSaathi.API.csproj",
       "projectName": "OnlineSaathi.API",
-      "projectPath": "/workspaces/onlinesaathi-chat/OnlineSaathi.API/OnlineSaathi.API.csproj",
+      "projectPath": "/workspaces/onlinesaathi-chat/onlinesaathi.api/OnlineSaathi.API.csproj",
       "packagesPath": "/home/codespace/.nuget/packages/",
-      "outputPath": "/workspaces/onlinesaathi-chat/OnlineSaathi.API/obj/",
+      "outputPath": "/workspaces/onlinesaathi-chat/onlinesaathi.api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/codespace/.nuget/NuGet/NuGet.Config"

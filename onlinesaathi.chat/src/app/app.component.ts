@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './_services/auth.service';
 import { Router } from '@angular/router';
 
@@ -51,7 +52,7 @@ import { Router } from '@angular/router';
     }
   `],
   standalone: true,
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule, NgbCollapse]
 })
 export class AppComponent implements OnInit {
   isNavCollapsed = true;
