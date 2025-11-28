@@ -35,7 +35,7 @@ namespace OnlineSaathi.API.Hubs
             await base.OnConnectedAsync();
         }
 
-        public override async Task OnDisconnectedAsync(Exception exception)
+        public override async Task OnDisconnectedAsync(Exception? exception)
         {
             var userId = Context.UserIdentifier;
             
@@ -81,6 +81,60 @@ namespace OnlineSaathi.API.Hubs
 
             // Send a notification to the sender that the message was sent
             await Clients.Caller.SendAsync("MessageSent", message);
+        }
+
+        public async Task SendCallOffer(string from, string to, string sdp)
+        {
+            var sender = await _userService.GetUserByIdAsync(from);
+            
+            if (_connections.TryGetValue(to, out var connectionId))
+            {
+                await Clients.Client(connectionId).SendAsync("ReceiveCallOffer", new
+                {
+                    from = from,
+                    fromName = sender?.Username,
+                    to = to,
+                    sdp = sdp
+                });
+            }
+        }
+
+        public async Task SendCallAnswer(string from, string to, string sdp)
+        {
+            if (_connections.TryGetValue(to, out var connectionId))
+            {
+                await Clients.Client(connectionId).SendAsync("ReceiveCallAnswer", new
+                {
+                    from = from,
+                    to = to,
+                    sdp = sdp
+                });
+            }
+        }
+
+        public async Task SendCallReject(string from, string to)
+        {
+            if (_connections.TryGetValue(to, out var connectionId))
+            {
+                await Clients.Client(connectionId).SendAsync("ReceiveCallReject", new
+                {
+                    from = from,
+                    to = to
+                });
+            }
+        }
+
+        public async Task SendIceCandidate(string from, string to, string candidate)
+        {
+            if (_connections.TryGetValue(to, out var connectionId))
+            {
+                await Clients.Client(connectionId).SendAsync("ReceiveIceCandidate", new
+                {
+                    from = from,
+                    to = to,
+                    candidate = candidate
+                });
+            }
         }
 
         public async Task MarkAsRead(string messageId)

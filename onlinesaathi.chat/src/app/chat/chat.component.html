@@ -32,16 +32,21 @@
     <!-- Chat Area -->
     <div class="col-md-8 d-flex flex-column" *ngIf="selectedUser">
       <!-- Chat Header -->
-      <div class="chat-header p-3 border-bottom d-flex align-items-center">
-        <div class="avatar me-3">
-          <div class="avatar-circle">
-            {{ selectedUser.name.charAt(0).toUpperCase() }}
+      <div class="chat-header p-3 border-bottom d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <div class="avatar me-3">
+            <div class="avatar-circle">
+              {{ selectedUser.name.charAt(0).toUpperCase() }}
+            </div>
+          </div>
+          <div>
+            <h5 class="mb-0">{{ selectedUser.name }}</h5>
+            <small class="text-muted">Online</small>
           </div>
         </div>
-        <div>
-          <h5 class="mb-0">{{ selectedUser.name }}</h5>
-          <small class="text-muted">Online</small>
-        </div>
+        <button class="btn btn-primary btn-sm" (click)="startVideoCall()">
+          <i class="fas fa-video"></i> Call
+        </button>
       </div>
 
       <!-- Messages -->

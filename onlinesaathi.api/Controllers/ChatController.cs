@@ -61,6 +61,28 @@ namespace OnlineSaathi.API.Controllers
             return Ok();
         }
 
+        [HttpGet("users")]
+        public async Task<IActionResult> GetActiveUsers()
+        {
+            var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return Unauthorized();
+            }
+
+            var currentUser = await _userService.GetUserByIdAsync(currentUserId);
+            if (currentUser == null)
+            {
+                return Unauthorized();
+            }
+
+            var users = await _userService.GetAvailableUsersForChatAsync(currentUserId, currentUser.UserType);
+            
+            // Convert to simple list with id and name
+            var userList = users.Select(u => new { id = u.Id, name = u.Username }).ToList();
+            return Ok(userList);
+        }
+
         [HttpGet("available-users")]
         public async Task<IActionResult> GetAvailableUsers()
         {

@@ -1,0 +1,41 @@
+<div class="video-call-container">
+  <!-- Local Video -->
+  <div class="local-video-wrapper">
+    <video #localVideo autoplay muted playsinline class="video-stream local-video"></video>
+    <div class="video-label">You</div>
+  </div>
+
+  <!-- Remote Video -->
+  <div class="remote-video-wrapper" *ngIf="remoteStream$ | async as remoteStream">
+    <video #remoteVideo autoplay playsinline class="video-stream remote-video"></video>
+    <div class="video-label">{{ selectedUser?.name }}</div>
+  </div>
+
+  <!-- Call Controls -->
+  <div class="call-controls">
+    <button class="btn btn-danger" (click)="endCall()" *ngIf="callState === 'connected'">
+      <i class="fas fa-phone-slash"></i> End Call
+    </button>
+    <button class="btn btn-warning" (click)="toggleAudio()" [class.active]="audioEnabled">
+      <i [class]="audioEnabled ? 'fas fa-microphone' : 'fas fa-microphone-slash'"></i>
+    </button>
+    <button class="btn btn-warning" (click)="toggleVideo()" [class.active]="videoEnabled">
+      <i [class]="videoEnabled ? 'fas fa-video' : 'fas fa-video-slash'"></i>
+    </button>
+  </div>
+
+  <!-- Incoming Call Dialog -->
+  <div class="incoming-call-dialog" *ngIf="incomingCall$ | async as incomingCall">
+    <div class="call-notification">
+      <h4>{{ incomingCall.from }} is calling...</h4>
+      <div class="call-actions">
+        <button class="btn btn-success" (click)="acceptCall(incomingCall)">
+          <i class="fas fa-phone"></i> Accept
+        </button>
+        <button class="btn btn-danger" (click)="rejectCall(incomingCall)">
+          <i class="fas fa-times"></i> Reject
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
