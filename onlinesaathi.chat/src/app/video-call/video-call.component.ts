@@ -22,9 +22,9 @@ export class VideoCallComponent implements OnInit, OnDestroy {
   audioEnabled = true;
   videoEnabled = true;
 
-  localStream$ = this.videoCallService.localStream$;
-  remoteStream$ = this.videoCallService.remoteStream$;
-  incomingCall$ = this.videoCallService.incomingCall$;
+  get localStream$() { return this.videoCallService.localStream$; }
+  get remoteStream$() { return this.videoCallService.remoteStream$; }
+  get incomingCall$() { return this.videoCallService.incomingCall$; }
 
   private destroy$ = new Subject<void>();
   private currentUserId: string = '';

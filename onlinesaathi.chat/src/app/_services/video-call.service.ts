@@ -115,6 +115,14 @@ export class VideoCallService {
     return JSON.stringify(offer);
   }
 
+  // Convenience to start a call: ensure local stream, set state and create offer
+  async initiateCall(): Promise<string> {
+    await this.getLocalStream();
+    this.setCallState('calling');
+    const offer = await this.createOffer();
+    return offer;
+  }
+
   // Handle incoming offer
   async handleOffer(offerSdp: string): Promise<string> {
     try {

@@ -1,20 +1,27 @@
-<div class="app-wrapper">
-  <app-header></app-header>
-  <div class="app-container">
-    <app-navbar (pageChange)="onPageChange($event)"></app-navbar>
+<ng-container *ngIf="(isAuthenticated$ | async); else showAuth">
+  <div class="app-wrapper">
+    <app-header></app-header>
+    <div class="app-container">
+      <app-navbar (pageChange)="onPageChange($event)"></app-navbar>
 
-    <!-- Show chats only on messages page -->
-    <app-chats *ngIf="currentPage === 'messages'"></app-chats>
+      <!-- Show chats only on messages page -->
+      <app-chats *ngIf="currentPage === 'messages'"></app-chats>
 
-    <div class="main-content">
-      <app-body *ngIf="currentPage === 'messages'"></app-body>
-      
-      <!-- Settings page content -->
-      <div *ngIf="currentPage === 'settings'">
-        <h2>Settings Page</h2> 
+      <div class="main-content">
+        <app-body *ngIf="currentPage === 'messages'"></app-body>
+        
+        <!-- Settings page content -->
+        <div *ngIf="currentPage === 'settings'">
+          <h2>Settings Page</h2> 
+        </div>
+
+        <router-outlet></router-outlet>
       </div>
-
-      <router-outlet></router-outlet>
     </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #showAuth>
+  <!-- Show only the routed auth pages (login/register) when not authenticated -->
+  <router-outlet></router-outlet>
+</ng-template>

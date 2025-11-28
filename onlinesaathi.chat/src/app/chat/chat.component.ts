@@ -196,10 +196,18 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     try {
       this.toastr.info('Starting video call...');
-      await this.videoCallService.initiateCall();
-      
+      // Prepare local media and create an SDP offer
+      const offer = await this.videoCallService.initiateCall();
+
+      // Send offer to the selected user through SignalR
+      await this.chatService.sendCallOffer({
+        from: this.currentUserId,
+        to: this.selectedUser.id,
+        sdp: offer
+      });
+
       // Route to video call component
-      this.router.navigate(['/video-call'], { 
+      this.router.navigate(['/video-call'], {
         queryParams: { userId: this.selectedUser.id, userName: this.selectedUser.name }
       });
     } catch (error) {
